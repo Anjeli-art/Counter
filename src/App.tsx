@@ -17,7 +17,6 @@ function App() {
     let onChangeValueMin = (e: ChangeEvent<HTMLInputElement>) => {
         const minValue = +e.currentTarget.value
         setinputValueMin(minValue)
-        console.log(inputValueMin)
         setbuttonDis(false)
 
         if (dataMax <= 0 || minValue < 0 || minValue >= dataMax) {
@@ -28,16 +27,17 @@ function App() {
     }
 
     let onChangeValueMax = (e: ChangeEvent<HTMLInputElement>) => {
-        const minvalue = +e.currentTarget.value
-        setinputValueMax(minvalue)
+        const maxValue = +e.currentTarget.value
+        setinputValueMax(maxValue)
         setbuttonDis(false)
 
-        if (minvalue <= 0 || dataMin < 0 || dataMin >= minvalue) {
+        if (maxValue <= 0 || dataMin < 0 || dataMin >= maxValue) {
             setDataString("error value!")
         } else {
             setDataString("enter value and press set")
         }
     }
+
     let [set, setSet] = useState(false)
 
     const upDate = () => {
