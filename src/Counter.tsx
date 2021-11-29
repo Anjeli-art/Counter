@@ -2,24 +2,25 @@ import React from 'react';
 import {UniversalButton} from "./UniversalButton";
 
 export type CounterType = {
-    dataMax: number
-    dataMin: number
+    inputValueMax: number
+    inputValueMin: number
     data: number
     dataString: string
-    set: boolean
+    buttonSet: boolean
     upDate: () => void
     upReset: () => void
     startDis: boolean
 }
 
-export function Counter(props: CounterType) {
+export const Counter: React.FC<CounterType> = ({inputValueMax, inputValueMin, data, startDis, ...props}) => {
 
-    let color = props.dataMax < 0 || props.dataMin < 0 || props.dataMax === props.dataMin || props.dataMin > props.dataMax || props.data === props.dataMax
-    let disInc = props.dataMax < 0 || props.dataMin < 0 || props.dataMax === props.dataMin || props.dataMin > props.dataMax || props.dataMax === props.data || props.startDis ? true : false
-    let disRes = props.dataMax < 0 || props.dataMin < 0 || props.dataMax === props.dataMin || props.dataMin > props.dataMax || props.startDis ? true : false
-    let counter = props.set === false ? props.dataString : props.data
+    const conditions = inputValueMax < 0 || inputValueMin < 0 || inputValueMax === inputValueMin || inputValueMin > inputValueMax
+    const color = conditions || data === inputValueMax
+    const disInc = conditions || inputValueMax === data || startDis ? true : false
+    const disRes = conditions || startDis ? true : false
+    const counter = props.buttonSet === false ? props.dataString : data
 
-    const counter2 = {
+    const counterTwo = {
         width: "350px",
         backgroundColor: "#282c34",
         padding: "20px",
@@ -37,7 +38,7 @@ export function Counter(props: CounterType) {
         fontWeight: 800,
         fontSize: typeof counter === "number" ? "500%" : "300%",
     }
-    const buttonBlock2 = {
+    const buttonBlockTwo = {
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
         padding: "10px 0px 10px 70px",
@@ -45,15 +46,15 @@ export function Counter(props: CounterType) {
 
 
     return (
-        <div style={counter2}>
+        <div style={counterTwo}>
             <div style={valueblock}>{counter}</div>
-            <div style={buttonBlock2}>
+            <div style={buttonBlockTwo}>
                 <UniversalButton title={"inc"}
-                                disabled={disInc}
-                                Callback={props.upDate}/>
+                                 disabled={disInc}
+                                 callBack={props.upDate}/>
                 <UniversalButton title={"reset"}
-                                disabled={disRes}
-                                Callback={props.upReset}/>
+                                 disabled={disRes}
+                                 callBack={props.upReset}/>
             </div>
         </div>
     );

@@ -2,8 +2,6 @@ import React, {ChangeEvent} from 'react';
 import {UniversalButton} from "./UniversalButton";
 
 export type StarterType = {
-    dataMax: number
-    dataMin: number
     buttonDis: boolean
     inputValueMax: number
     inputValueMin: number
@@ -12,13 +10,14 @@ export type StarterType = {
     onChangeValueMin: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export function Starter(props: StarterType) {
+export const Starter: React.FC<StarterType> = ({buttonDis, inputValueMax, inputValueMin, onSet, ...props}) => {
 
-    let disSet = props.dataMax < 0 || props.dataMin < 0 || props.dataMax === props.dataMin || props.dataMin > props.dataMax || props.buttonDis ? true : false
-    let bordermin = props.dataMax === props.dataMin || props.dataMin < 0 || props.dataMin > props.dataMax
-    let bordermax = props.dataMax === props.dataMin || props.dataMax < 0
+    const disSet = inputValueMax < 0 || inputValueMin < 0 || inputValueMax === inputValueMin || inputValueMin > inputValueMax || buttonDis ? true : false
+    const conditions = inputValueMax === inputValueMin || inputValueMin > inputValueMax
+    const borderMin = conditions || inputValueMin < 0
+    const borderMax = conditions || inputValueMax < 0
 
-    const counter1 = {
+    const counter = {
         width: "350px",
         backgroundColor: "#282c34",
         padding: "20px",
@@ -33,7 +32,7 @@ export function Starter(props: StarterType) {
         marginBottom: "10px",
         color: "#c2fdf4",
     }
-    const buttonBlock1 = {
+    const buttonBlock= {
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
         padding: "10px 0px 10px 120px",
@@ -46,30 +45,30 @@ export function Starter(props: StarterType) {
         borderRadius: "10px",
         padding: "8px",
         outline: "0",
-        border: bordermin ? "4px solid #7f0703" : "4px solid #c2fdf4",
-        backgroundColor: bordermin ? "#fca3a3" : "#f0fdf9"
+        border: borderMin ? "4px solid #7f0703" : "4px solid #c2fdf4",
+        backgroundColor: borderMin ? "#fca3a3" : "#f0fdf9"
     }
     const inputMax = {
         borderRadius: "10px",
         padding: "8px",
         outline: "0",
-        border: bordermax ? "4px solid #7f0703" : "4px solid #c2fdf4",
-        backgroundColor: bordermax ? "#fca3a3" : "#f0fdf9"
+        border: borderMax ? "4px solid #7f0703" : "4px solid #c2fdf4",
+        backgroundColor: borderMax ? "#fca3a3" : "#f0fdf9"
     }
 
 
     return (
-        <div style={counter1}>
+        <div style={counter}>
             <div style={inputblock}>
                 <label style={label}>max value:</label>
-                <input type="number" value={props.inputValueMax} onChange={props.onChangeValueMax} style={inputMax}/>
+                <input type="number" value={inputValueMax} onChange={props.onChangeValueMax} style={inputMax}/>
                 <br/>
                 <br/>
                 <label style={label}>min value:</label>
-                <input type="number" value={props.inputValueMin} onChange={props.onChangeValueMin} style={inputMin}/>
+                <input type="number" value={inputValueMin} onChange={props.onChangeValueMin} style={inputMin}/>
             </div>
-            <div style={buttonBlock1}>
-                <UniversalButton title={"set"} Callback={props.onSet} disabled={disSet}/>
+            <div style={buttonBlock}>
+                <UniversalButton title={"set"} callBack={onSet} disabled={disSet}/>
             </div>
         </div>
 

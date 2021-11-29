@@ -3,14 +3,14 @@ import React from "react";
 export type UniversalButonType = {
     disabled: boolean
     title: string
-    Callback: () => void
+    callBack: () => void
 }
 
 
-export function UniversalButton(props: UniversalButonType) {
+export const UniversalButton:React.FC<UniversalButonType>=({disabled,title,callBack,...props})=> {
 
     const buttonRes = {
-        backgroundColor: props.disabled ? "#57667b" : "#c2fdf4",
+        backgroundColor: disabled ? "#57667b" : "#c2fdf4",
         borderRadius: "10px",
         padding: "10px",
         margin: "5px",
@@ -20,7 +20,7 @@ export function UniversalButton(props: UniversalButonType) {
         border: "0",
     }
     const buttonInc = {
-        backgroundColor: props.disabled ? "#57667b" : "#c2fdf4",
+        backgroundColor: disabled ? "#57667b" : "#c2fdf4",
         borderRadius: "10px",
         padding: "10px",
         margin: "5px",
@@ -30,7 +30,7 @@ export function UniversalButton(props: UniversalButonType) {
         border: "0",
     }
     const buttonSet = {
-        backgroundColor: props.disabled ? "#57667b" : "#c2fdf4",
+        backgroundColor: disabled ? "#57667b" : "#c2fdf4",
         borderRadius: "10px",
         padding: "10px",
         margin: "5px",
@@ -41,9 +41,9 @@ export function UniversalButton(props: UniversalButonType) {
     }
 
     return (
-        <button disabled={props.disabled}
-                onClick={props.Callback}
-                style={props.title === "set" ? buttonSet : props.title === "reset" ? buttonRes : buttonInc}>{props.title}</button>
+        <button disabled={disabled}
+                onClick={callBack}
+                style={title === "set" ? buttonSet : title === "reset" ? buttonRes : buttonInc}>{title}</button>
     )
 
 }
