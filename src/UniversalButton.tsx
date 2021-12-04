@@ -12,32 +12,36 @@ export const UniversalButton:React.FC<UniversalButonType>=({disabled,title,callB
     const buttonRes = {
         backgroundColor: disabled ? "#57667b" : "#c2fdf4",
         borderRadius: "10px",
-        padding: "10px",
-        margin: "5px",
+        margin: "5px 0 5px 15px",
+        display:"block",
         fontWeight: 800,
         fontSize: "200%",
         color: "#282c34",
         border: "0",
+        padding: "10px"
     }
     const buttonInc = {
         backgroundColor: disabled ? "#57667b" : "#c2fdf4",
         borderRadius: "10px",
-        padding: "10px",
-        margin: "5px",
+        margin: "5px 0",
+        display:"block",
         fontWeight: 800,
         fontSize: "200%",
         color: "#282c34",
         border: "0",
+        padding: "10px"
     }
     const buttonSet = {
         backgroundColor: disabled ? "#57667b" : "#c2fdf4",
         borderRadius: "10px",
-        padding: "10px",
-        margin: "5px",
+        margin: "5px auto",
+        display:"block",
         fontWeight: 800,
         fontSize: "200%",
         color: "#282c34",
         border: "0",
+        padding: "10px"
+
     }
 
     return (

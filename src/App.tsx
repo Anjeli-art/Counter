@@ -80,9 +80,12 @@ export const App: React.FC = () => {
     //         setinputValueMin(num)
     //     }
     // }, [])
+    //
     // useEffect(() => {
     //     localStorage.setItem("inputValueMin", JSON.stringify(inputValueMin))
     // }, [inputValueMin])
+    //
+    //
     // useEffect(() => {
     //     let str = localStorage.getItem("inputValueMax")
     //     if (str) {
@@ -146,13 +149,15 @@ export const App: React.FC = () => {
 
 
     const block = {
-        height: "100vh",
-        backgroundColor: "#282c34",
+        height: "100%",
         display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+
     }
 
     return (
-        <div style={block}>
+        <div style={block} className={"block"}>
             <Starter buttonDis={buttonDis}
                      inputValueMax={inputValueMax}
                      inputValueMin={inputValueMin}

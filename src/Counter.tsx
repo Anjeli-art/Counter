@@ -21,19 +21,23 @@ export const Counter: React.FC<CounterType> = ({inputValueMax, inputValueMin, da
     const counter = props.buttonSet === false ? props.dataString : data
 
     const counterTwo = {
-        width: "350px",
-        backgroundColor: "#282c34",
         padding: "20px",
-        margin: "100px 100px 350px 100px",
+        width: "390px",
+        backgroundColor: "#282c34",
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
+        minHeight: "300px"
     }
     const valueblock = {
         "text-align": "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         border: "4px solid #c2fdf4",
-        height: "130px",
+        minHeight: "150px",
         borderRadius: "15px",
         marginBottom: "10px",
+        lineHeight: "1.2",
         color: color ? "#7f0703" : "#c2fdf4",
         fontWeight: 800,
         fontSize: typeof counter === "number" ? "500%" : "300%",
@@ -41,7 +45,9 @@ export const Counter: React.FC<CounterType> = ({inputValueMax, inputValueMin, da
     const buttonBlockTwo = {
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
-        padding: "10px 0px 10px 70px",
+        display: "flex",
+        justifyContent: "center",
+        padding: "10px"
     }
 
 

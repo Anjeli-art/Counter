@@ -18,24 +18,25 @@ export const Starter: React.FC<StarterType> = ({buttonDis, inputValueMax, inputV
     const borderMax = conditions || inputValueMax < 0
 
     const counter = {
-        width: "350px",
+        minHeight:"300px",
+        padding:"20px",
         backgroundColor: "#282c34",
-        padding: "20px",
-        margin: "100px 150px 350px 250px",
+        marginRight:"100px",
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
+        width: "390px",
     }
     const inputblock = {
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
-        padding: "10px",
         marginBottom: "10px",
+        padding:"15px 5px 15px 5px",
         color: "#c2fdf4",
     }
     const buttonBlock= {
         border: "4px solid #c2fdf4",
         borderRadius: "15px",
-        padding: "10px 0px 10px 120px",
+        padding: "10px"
     }
     const label = {
         fontWeight: 800,
@@ -58,7 +59,7 @@ export const Starter: React.FC<StarterType> = ({buttonDis, inputValueMax, inputV
 
 
     return (
-        <div style={counter}>
+        <div style={counter} className={"counter"}>
             <div style={inputblock}>
                 <label style={label}>max value:</label>
                 <input type="number" value={inputValueMax} onChange={props.onChangeValueMax} style={inputMax}/>
